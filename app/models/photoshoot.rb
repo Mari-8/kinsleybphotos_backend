@@ -1,0 +1,2 @@
+class Photoshoot < ApplicationRecord
+end
