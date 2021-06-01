@@ -6,7 +6,7 @@ class CreatePhotoshoots < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :email
       t.string :cell
-      t.string :type
+      t.string :shoot_type
       t.integer :locations
       t.integer :outfits
       t.text :specifics

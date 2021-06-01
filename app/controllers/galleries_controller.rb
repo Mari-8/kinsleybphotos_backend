@@ -33,7 +33,7 @@ class GalleriesController < ApplicationController
         gallery = Gallery.find(params[:id]) 
         if gallery 
             gallery.destroy 
-            render json: { message: 'Destroyed gallery' } 
+            render json: { message: 'Deleted gallery' } 
         else 
             render json: { error: 'There was a problem deleting gallery'}
         end 
