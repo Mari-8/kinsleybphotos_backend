@@ -2,7 +2,8 @@ class PhotoshootsController < ApplicationController
 
     def index 
         photoshoots = Photoshoot.all
-        render json: photoshoots 
+        
+        render json: PhotoshootSerializer.new(photoshoots).serialized_json
     end 
 
     def show 
