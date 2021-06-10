@@ -11,7 +11,9 @@ class PicturesController < ApplicationController
     end 
 
     def create 
-        picture = Picture.new(picture_params) 
+        byebug
+        picture = Picture.create(src: params[:src], thumbnail: params[:thumbnail], gallery_id: params[:gallery_id])
+        byebug
         if picture.save 
             render json: picture 
         else 
@@ -41,7 +43,7 @@ class PicturesController < ApplicationController
         private 
 
         def picture_params
-            params.permit(:file, :gallery_id)
+            params.permit(:file, :gallery_id, :src, :thumbnail)
         end 
     end 
 end

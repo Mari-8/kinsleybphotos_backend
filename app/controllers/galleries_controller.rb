@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
 
     def index 
         galleries = Gallery.all 
-        render json: galleries 
+        render json: GalleriesSerializer.new(galleries).serialized_json
     end 
 
     def show 
@@ -11,7 +11,8 @@ class GalleriesController < ApplicationController
     end 
 
     def create 
-        gallery = Gallery.new(gellery_params) 
+        gallery = Gallery.create!(gallery_params) 
+        
         if gallery.save 
             render json: gallery 
         else 
@@ -42,6 +43,6 @@ class GalleriesController < ApplicationController
     private 
 
     def gallery_params 
-        params.permit(:title, :description)
+        params.permit(:title, :description, image: [])
     end 
 end
