@@ -1,0 +1,6 @@
+production:
+  cloud_name: "kinsleybphoto"
+  api_key: "629783994855417"
+  api_secret: "LGMB8XTlHRcgLTzurOLtojfFlZQ"
+  secure: true
+  cdn_subdomain: true

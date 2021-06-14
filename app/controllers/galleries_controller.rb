@@ -7,7 +7,12 @@ class GalleriesController < ApplicationController
 
     def show 
         gallery = Gallery.find(params[:id])
-        render json: gallery
+        options = {
+            include: [:pictures => {:only => :id}]
+        }
+        render json: gallery.to_json(:include => {
+            :pictures => {:only => [:url]}
+        })
     end 
 
     def create 

@@ -11,11 +11,13 @@ class PicturesController < ApplicationController
     end 
 
     def create 
-        byebug
-        picture = Picture.create(src: params[:src], thumbnail: params[:thumbnail], gallery_id: params[:gallery_id])
-        byebug
-        if picture.save 
-            render json: picture 
+        @picture = Picture.new
+        @picture.src = params[:picture][:src] 
+        @picture.thumbnail = params[:picture][:thumbnail] 
+        @picture.gallery_id = params[:picture][:gallery_id]
+     
+        if @picture.save 
+            render json: @picture 
         else 
             render json: { error: "There was a problem creating this picture" }
         end 
@@ -39,11 +41,12 @@ class PicturesController < ApplicationController
         else 
             render json: { error: "There was a problem deleting picture" }
         end 
-
-        private 
+    end
+        
+    private 
 
         def picture_params
-            params.permit(:file, :gallery_id, :src, :thumbnail)
+            params.require(:picture).permit(:gallery_id, :src, :thumbnail, :image)
         end 
-    end 
+    
 end

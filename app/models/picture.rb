@@ -1,5 +1,5 @@
 class Picture < ApplicationRecord
   belongs_to :gallery
 
-  has_many_attached :images
+  has_one_attached :image, service: :cloudinary
 end
