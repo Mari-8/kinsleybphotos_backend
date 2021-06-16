@@ -16,8 +16,8 @@ class GalleriesController < ApplicationController
     end 
 
     def create 
-        gallery = Gallery.create!(gallery_params) 
-        
+        gallery = Gallery.create(gallery_params) 
+        byebug
         if gallery.save 
             render json: gallery 
         else 
@@ -48,6 +48,6 @@ class GalleriesController < ApplicationController
     private 
 
     def gallery_params 
-        params.permit(:title, :description, image: [])
+        params.require(:gallery).permit(:title, :description, :thumbnail)
     end 
 end

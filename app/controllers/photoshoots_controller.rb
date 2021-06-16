@@ -12,6 +12,7 @@ class PhotoshootsController < ApplicationController
     end 
 
     def create 
+        
         photoshoot = Photoshoot.new(photoshoot_params) 
         if photoshoot.save 
             render json: photoshoot 
@@ -31,6 +32,7 @@ class PhotoshootsController < ApplicationController
     end 
 
     def destroy 
+        byebug
         photoshoot = Photoshoot.find(params[:id]) 
         if photoshoot 
             photoshoot.destroy 
@@ -43,6 +45,6 @@ class PhotoshootsController < ApplicationController
     private 
 
     def photoshoot_params 
-        params.permit(:date, :time, :name, :email, :cell, :type, :locations, :outfits, :specifics)
+        params.require(:photoshoot).permit(:date, :time, :name, :email, :cell, :shoot_type, :locations, :outfits, :specifics)
     end 
 end

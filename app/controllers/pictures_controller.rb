@@ -11,11 +11,14 @@ class PicturesController < ApplicationController
     end 
 
     def create 
+        byebug
         @picture = Picture.new
         @picture.src = params[:picture][:src] 
         @picture.thumbnail = params[:picture][:thumbnail] 
         @picture.gallery_id = params[:picture][:gallery_id]
      
+        byebug
+        
         if @picture.save 
             render json: @picture 
         else 
@@ -33,7 +36,7 @@ class PicturesController < ApplicationController
         end 
     end 
 
-    def destroy 
+    def delete 
         picture = Picture.find(params[:id])
         if picture 
             picture.destroy
